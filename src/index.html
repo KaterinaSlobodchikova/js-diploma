@@ -6,13 +6,96 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./scss/styles.scss">
-    <title>Document</title>
+    <script src="https://kit.fontawesome.com/f5e52295e2.js" crossorigin="anonymous"></script>
+    <title>Pinterest</title>
 </head>
 
 <body>
 
+    <header id="header-container" class="header-wrapper">
+        <div class="logo-wrapper">
+            <i class="fa-brands fa-pinterest fa-2x"></i>
+        </div>
+        
+        <button class="button-main">Home</button>
+        
+        <span class="search-icon"><input class="input-main" type="text" placeholder="Search"></span>
+        
+        <div class="bell-wrapper" id="updates-button">
+            <i class="fa-solid fa-bell fa-2x"></i>
+        </div>
+        <div class="comment-wrapper" id="comments-button">
+            <i class="fa-solid fa-comment-dots fa-2x"></i>
+        </div>
+        <div class="board-wrapper">
+            <div class="main-board">K</div>
+        </div>
+        <div class="check-box-wrapper" id="check-box-button">
+            <div class="check-box"></div>
+        </div>
+
+        <div id="modal-updates" class="modal-window hidden">
+            <h2 class="modal-header">Updates</h2>
+        </div>
+
+        <div id="modal-comments" class="modal-window hidden">
+            <h2 class="modal-header">Inbox</h2>
+            <h1 class="modal-header first">Share ideas with your friends</h1>
+            <span class="search-icon"><input class="input-main small" type="text" placeholder="Search by name or email address"></span>
+            <p class="text-basic">Suggested</p>
+        </div>
+
+        <div id="modal-account" class="modal-window hidden">
+            <p class="text-basic small">Currently in</p>
+            
+            <div class="info-wrapper">
+                <div class="like-image"></div>
+                <div class="person-wrapper">
+                    <p class="text-basic bold">Katerina Sl</p>
+                    <p class="text-basic gray">Personal</p>
+                    <p class="text-basic gray">emal@gmail.com</p>
+                </div>
+                <div class="check-box"></div>
+            </div>
+            
+            <p class="text-basic small">Your accounts</p>
+
+            <div class="options-wrapper">
+                <button class="settings-button">Add account</button>
+            </div>
+            <div class="options-wrapper">
+                <button class="settings-button">Convert to business</button>
+            </div>
+
+            <p class="text-basic small">More options</p>
+
+            <div class="options-wrapper">
+                <button class="settings-button">Settings</button>
+            </div>
+            <div class="options-wrapper">
+                <button class="settings-button">Tune your home feed</button>
+            </div>
+            <div class="options-wrapper">
+                <button class="settings-button">Install the Windows app</button>
+            </div>
+            <div class="options-wrapper">
+                <button class="settings-button">Get help</button>
+            </div>
+            <div class="options-wrapper">
+                <button class="settings-button">See terms and privacy</button>
+            </div>
+            <div class="options-wrapper">
+                <button class="settings-button">Log out</button>
+            </div>
+        </div>
+        
+    </header>
+
+    <section id="main-wrapper" class="main-container">
+    </section>
+
     <script src="./js/constants.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/index.js" type="module"></script>
     <script src="./js/utils.js"></script>
     
 </body>
