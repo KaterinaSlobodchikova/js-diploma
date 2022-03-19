@@ -146,12 +146,13 @@
         height: 650px;
         border-radius: 20px;
         background-color: white;
-        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
         position: absolute;
         display: flex;
         margin-top: 750px;
         margin-left: 970px;
         flex-direction: column;
+        z-index: 100;
 
         .search-icon:before {
             content: "\f002";
@@ -290,5 +291,92 @@
 }
 
 .main-container {
-    height: 80vh;
+    height: 95vh;
+    width: 1440px;
+    position: relative;
+    display: flex;
+
+    .add-pin-button {
+        width: 65px;
+        height: 65px;
+        border: none;
+        border-radius: 50px;
+        background-color: white;
+        box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+        font-family: "Open Sans", sans-serif;
+        font-size: 45px;
+        position: fixed;
+        top: 450px;
+        left: 1320px;
+        cursor: pointer;
+    }
+
+    .add-pin-window {
+        width: 780px;
+        height: 540px;
+        border-radius: 20px;
+        background-color: white;
+        position: absolute;
+        margin: 50px 400px;
+        display: flex;
+
+        .buttons-wrapper {
+            display: flex;
+            gap: 560px;
+            padding: 15px 40px;
+
+            .cancel-pin-button, .save-pin-button {
+                border: none;
+                border-radius: 15px;
+                font-family: "Open Sans", sans-serif;
+                width: 70px;
+                height: 40px;
+                font-size: 17px;
+                font-weight: 700;
+                cursor: pointer;
+            }
+
+            .save-pin-button {
+                background-color: rgb(231, 3, 3);
+                color: white;
+            }
+        }
+        
+        .image-input-wrapper {
+                        
+            .input-img {
+                background-color: rgb(240, 238, 238);
+                border: none;
+                width: 300px;
+                height: 400px;
+                margin-left: 40px;
+                border-radius: 10px;
+                
+            }
+        }
+
+        .input-text {
+            font-family: "Open Sans", sans-serif;
+            font-size: 37px;
+            font-weight: 700;
+            border: none;
+            width: 300px;
+            //padding-left: 30px;
+            //padding-top: 40px;
+
+            &:hover {
+                outline: none;
+            }
+    
+            &:focus {
+                outline: none;
+            }
+        }
+        
+
+    }
+}
+
+.lightgray {
+    background-color: rgb(240, 238, 238);
 }

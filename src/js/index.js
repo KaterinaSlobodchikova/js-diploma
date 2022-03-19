@@ -1,8 +1,10 @@
-
+import { getPhotos } from './utils.js';
+import { PHOTO_KEY, PHOTOS_LIST_KEY } from './constants.js';
 
 let isUpdatesOpen = false;
 let isCommentsOpen = false;
 let isAccountOpen = false;
+let isPinAdd = false;
 
 const updatesWindow = document.getElementById('modal-updates');
 const commentsWindow = document.getElementById('modal-comments');
@@ -31,17 +33,19 @@ showAccountInfo.addEventListener('click', () => {
 
 const main = document.getElementById('main-wrapper');
 main.addEventListener('click', (e) => {
-    const isTargetMainWindow = e.target.id.split('-')[0] === 'main';
+    const isTargetUpdatesWindow = e.target.id.split('-')[1] === 'updates';
+    const isTargetCommentsWindow = e.target.id.split('-')[1] === 'comments';
+    const isTargetAccountWindow = e.target.id.split('-')[1] === 'account';
 
-    if (!updatesWindow.contains(e.target) && isUpdatesOpen && isTargetMainWindow) {
+    if (!updatesWindow.contains(e.target) && isUpdatesOpen && !isTargetUpdatesWindow) {
         hideUpdatesWindow();
     }
 
-    if (!commentsWindow.contains(e.target) && isCommentsOpen && isTargetMainWindow) {
+    if (!commentsWindow.contains(e.target) && isCommentsOpen && !isTargetCommentsWindow) {
         hideCommentsWindow();
     }
 
-    if (!accountWindow.contains(e.target) && isAccountOpen && isTargetMainWindow) {
+    if (!accountWindow.contains(e.target) && isAccountOpen && !isTargetAccountWindow) {
         hideAccountWindow();
     }
 })
@@ -63,3 +67,23 @@ const hideAccountWindow = () => {
     const modalWindow = document.getElementById('modal-account');
     modalWindow.className += ' hidden';
 }
+
+const addPin = document.getElementById('pin-add-button');
+addPin.addEventListener('click', () => {
+    isPinAdd = true;
+    const windowAddPin = document.getElementById('modal-add-pin');
+    windowAddPin.style.display = 'block';
+    const wrapper = document.getElementById('main-wrapper');
+    wrapper.className += ' lightgray';
+    windowAddPin.className = 'add-pin-window';
+});
+
+const hideWindow = () => {
+    const windowAddPin = document.getElementById('modal-add-pin');
+    windowAddPin.style.display = 'none'; 
+    const wrapper = document.getElementById('main-wrapper');
+    wrapper.className += 'main-container';
+}
+
+const cancelCreatePin = document.getElementById('cancel-button');
+cancelCreatePin.addEventListener('click', hideWindow);
