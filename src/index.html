@@ -98,13 +98,31 @@
                 <button id="cancel-button" class="cancel-pin-button">Cancel</button>
                 <button id="save-button" class="save-pin-button">Save</button>
             </div>
-            <div class="image-input-wrapper"><input type="file" class="input-img" id="file1"></div>
-            
-            <input type="text" placeholder="Add your title" class="input-text">
-
-            
+            <span class="input-wrapper">
+                <input type="file" class="input-img" id="file">
+                
+            </span>
+            <span class="title-wrapper">
+                <input type="text" placeholder="Add your title" id="title" class="input-text">
+            </span>
         </div>
         <button class="add-pin-button" id="pin-add-button">+</button>
+
+        <div class="data-list" id="data-container"></div>
+
+        <div id="modal-edit" class="add-pin-window edit hidden">
+            <div class="buttons-wrapper">
+                <button id="cancel-btn" class="cancel-pin-button">Cancel</button>
+                <button id="save-btn" class="save-pin-button">Save</button>
+            </div>
+            <span class="input-wrapper">
+                <input type="file" class="input-img" id="file-edit">
+                
+            </span>
+            <span class="title-wrapper">
+                <input type="text" placeholder="Add your title" id="title-edit" class="input-text">
+            </span>
+        </div>
     </section>
 
     

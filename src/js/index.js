@@ -1,10 +1,13 @@
-import { getPhotos } from './utils.js';
+import { addNewPin, getPhotos, addNewPin, savePin, getPinAsHtml } from './utils.js';
 import { PHOTO_KEY, PHOTOS_LIST_KEY } from './constants.js';
+import { PIN_PHOTOS } from './api.js';
 
 let isUpdatesOpen = false;
 let isCommentsOpen = false;
 let isAccountOpen = false;
 let isPinAdd = false;
+let isEditOpen = false;
+let editedId = null;
 
 const updatesWindow = document.getElementById('modal-updates');
 const commentsWindow = document.getElementById('modal-comments');
@@ -87,3 +90,41 @@ const hideWindow = () => {
 
 const cancelCreatePin = document.getElementById('cancel-button');
 cancelCreatePin.addEventListener('click', hideWindow);
+
+const saveButton = document.getElementById('save-button');
+saveButton.addEventListener('click', () => {
+    const title = document.getElementById('title').value;
+    const file = document.getElementById('file').value;
+    
+    if (!title || !file) {
+        alert('Fill in all fields')
+    } else {
+        addNewPin({ title, file });
+        hideWindow();
+    }
+});
+
+export const showEditWindow = (pinId) => {
+    isEditOpen = true;
+    editedId = pinId;
+
+    const modalWindow = document.getElementById('modal-edit');
+    modalWindow.className = 'add-pin-window edit';
+
+    const wrapper = document.getElementById('main-wrapper');
+    wrapper.className += ' lightgray';
+    const title = document.getElementById('title-edit');
+    const file = document.getElementById('file-edit');
+    const pin = getUserById(pinId);
+
+    title.value = pin.title;
+    file.value = pin.file;
+}
+
+const editButton = document.getElementById('data-container');
+editButton.addEventListener('click', (e) => {
+    if(e.target.id.split('_')[0] === 'edit-pin') {
+        showEditWindow();
+    }
+})
+

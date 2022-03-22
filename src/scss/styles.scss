@@ -295,6 +295,7 @@
     width: 1440px;
     position: relative;
     display: flex;
+    z-index: 50;
 
     .add-pin-button {
         width: 65px;
@@ -306,7 +307,7 @@
         font-family: "Open Sans", sans-serif;
         font-size: 45px;
         position: fixed;
-        top: 450px;
+        top: 550px;
         left: 1320px;
         cursor: pointer;
     }
@@ -341,38 +342,45 @@
                 color: white;
             }
         }
-        
-        .image-input-wrapper {
-                        
+
+        .input-wrapper {
+            position: relative;
+
             .input-img {
+                color: transparent;
                 background-color: rgb(240, 238, 238);
                 border: none;
                 width: 300px;
                 height: 400px;
                 margin-left: 40px;
                 border-radius: 10px;
-                
+                font-family: "Open Sans", sans-serif;
+                cursor: pointer;
             }
+
         }
 
-        .input-text {
-            font-family: "Open Sans", sans-serif;
-            font-size: 37px;
-            font-weight: 700;
-            border: none;
-            width: 300px;
-            //padding-left: 30px;
-            //padding-top: 40px;
+        .title-wrapper {
 
-            &:hover {
-                outline: none;
-            }
-    
-            &:focus {
-                outline: none;
-            }
-        }
+            .input-text {
+                font-family: "Open Sans", sans-serif;
+                font-size: 37px;
+                font-weight: 700;
+                border: none;
+                width: 300px;
+                padding-left: 30px;
+                padding-top: 10px;
+
+                &:hover {
+                    outline: none;
+                }
         
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+
 
     }
 }
@@ -380,3 +388,31 @@
 .lightgray {
     background-color: rgb(240, 238, 238);
 }
+
+.pin-wrapper {
+    margin: 20px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+
+    .pin-image {
+        width: 200px;
+        border-radius: 10px;
+    }
+
+    .delete-btn, .edit-btn {
+        color: black;
+        background-color: rgb(240, 238, 238);
+        border: none;
+        width: 60px;
+        height: 25px;
+        border-radius: 20px;
+        font-family: "Open Sans", sans-serif;
+        font-size: 13px;
+        cursor: pointer;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+}
+
+

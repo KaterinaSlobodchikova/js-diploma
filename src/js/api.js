@@ -122,10 +122,28 @@ const PIN_PHOTOS = [
     }
 ]
 
-export const getPhotos = () => {
+localStorage.setItem('pins', JSON.stringify(PIN_PHOTOS));
+
+export const getPins = () => {
     if (JSON.parse(localStorage.getItem(PHOTOS_LIST_KEY))) {
         return JSON.parse(localStorage.getItem(PHOTOS_LIST_KEY));
     }
 
     return PIN_PHOTOS;
+}
+
+export function getPhotos() {
+    return fetch('https://jsonplaceholder.typicode.com/photos')
+    .then(function(res) {
+        return res.json();
+    })
+    then((res) => {
+        var result = document.getElementById('main-wrapper');
+        console.log(res);
+        res.forEach(element =>{
+            const ffs = document.createElement('img');
+            ffs.src = element.url;
+            main-wrapper.append(ffs);
+        });
+    });
 }
