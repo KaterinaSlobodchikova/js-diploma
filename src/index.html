@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./scss/styles.scss">
     <script src="https://kit.fontawesome.com/f5e52295e2.js" crossorigin="anonymous"></script>
-    <title>Pinterest</title>
+    <title>Pinterest Clone</title>
 </head>
 
 <body>
@@ -98,13 +98,17 @@
                 <button id="cancel-button" class="cancel-pin-button">Cancel</button>
                 <button id="save-button" class="save-pin-button">Save</button>
             </div>
-            <span class="input-wrapper">
-                <input type="file" class="input-img" id="file">
-                
-            </span>
-            <span class="title-wrapper">
-                <input type="text" placeholder="Add your title" id="title" class="input-text">
-            </span>
+            <div class="add-pin-container">
+                <span class="input-wrapper">
+                    <img class="preview-image" id="preview-img">
+                    <input type="file" class="input-img" id="file" onchange="preview(this.value)">
+                                
+                </span>
+                <span class="title-wrapper">
+                    <input type="text" placeholder="Add your title" id="title" class="input-text">
+                </span>
+            </div>
+            
         </div>
         <button class="add-pin-button" id="pin-add-button">+</button>
 

@@ -128,3 +128,17 @@ editButton.addEventListener('click', (e) => {
     }
 })
 
+
+
+const inputImg = document.getElementById('file');
+inputImg.addEventListener('click', (e) => {
+    
+    if(!e.target.files[0]) {
+        inputImg.className += ' hidden';
+        onFileSelect(e);        
+    }
+})
+
+
+
+

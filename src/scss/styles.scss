@@ -294,8 +294,19 @@
     height: 95vh;
     width: 1440px;
     position: relative;
-    display: flex;
+    //display: flex;
     z-index: 50;
+    padding-left: 50px;
+
+    .pin-photo {
+        width: 210px;
+        margin: 10px;
+        border-radius: 20px;
+    }
+
+    .data-list {
+        display: flex;
+    }
 
     .add-pin-button {
         width: 65px;
@@ -343,46 +354,59 @@
             }
         }
 
-        .input-wrapper {
-            position: relative;
+        .add-pin-container {
+            display: flex;
 
-            .input-img {
-                color: transparent;
-                background-color: rgb(240, 238, 238);
-                border: none;
-                width: 300px;
-                height: 400px;
-                margin-left: 40px;
-                border-radius: 10px;
-                font-family: "Open Sans", sans-serif;
-                cursor: pointer;
-            }
 
-        }
-
-        .title-wrapper {
-
-            .input-text {
-                font-family: "Open Sans", sans-serif;
-                font-size: 37px;
-                font-weight: 700;
-                border: none;
-                width: 300px;
-                padding-left: 30px;
+            .input-wrapper {
+                display: flex;
                 padding-top: 10px;
-
-                &:hover {
-                    outline: none;
+                
+                .input-img {
+                    color: transparent;
+                    background-color: rgb(240, 238, 238);
+                    border: none;
+                    width: 300px;
+                    height: 400px;
+                    border-radius: 10px;
+                    font-family: "Open Sans", sans-serif;
+                    cursor: pointer;
+                    padding: 150px 100px;
                 }
-        
-                &:focus {
-                    outline: none;
+
+            }
+
+            .title-wrapper {
+
+                .input-text {
+                    font-family: "Open Sans", sans-serif;
+                    font-size: 37px;
+                    font-weight: 700;
+                    border: none;
+                    width: 300px;
+                    padding-left: 30px;
+                    padding-top: 30px;
+
+                    &:hover {
+                        outline: none;
+                    }
+            
+                    &:focus {
+                        outline: none;
+                    }
                 }
             }
         }
 
-
+        
     }
+
+    .preview-image {
+        height: 450px;
+        border-radius: 10px;
+        margin-left: 40px;
+    }
+
 }
 
 .lightgray {
@@ -390,13 +414,13 @@
 }
 
 .pin-wrapper {
-    margin: 20px;
+    margin: 10px;
     font-family: "Open Sans", sans-serif;
     font-size: 17px;
     font-weight: 700;
 
     .pin-image {
-        width: 200px;
+        width: 210px;
         border-radius: 10px;
     }
 
@@ -414,5 +438,7 @@
         margin-top: 10px;
     }
 }
+
+
 
 

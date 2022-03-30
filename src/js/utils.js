@@ -8,7 +8,7 @@ export const initializeHomePage = () => {
 export const appendPin = (pin) => {
     const dataContainer = document.getElementById('data-container');
     const pinNode = getPinAsHtml(pin);
-    dataContainer.append(pinNode);    
+    dataContainer.prepend(pinNode);    
 }
 
 export const getPinAsHtml = (pin) => {
@@ -59,6 +59,8 @@ export const addNewPin = (pinData) => {
     //localStorage.setItem(PHOTOS_LIST_KEY, JSON.stringify(pinToSave));
 }
 
+initializeHomePage();
+
 export const savePin = (id, pinData) => {
     const storedPins = JSON.parse(localStorage.getItem(PIN_PHOTOS));
     const pinToSave = storedPins.map(pin =>{
@@ -76,5 +78,22 @@ export const savePin = (id, pinData) => {
     localStorage.setItem(PHOTOS_LIST_KEY, JSON.stringify(pinToSave));
 
 }
+
+function onFileSelect(e) {
+    const f = e.target.files[0];
+    const reader = new FileReader;
+    const place = document.getElementById('preview-img');
+    reader.readAsDataURL(f);
+    reader.onload = function(e) {
+        place.src = e.target.result;
+    }
+}
+if(window.File && window.FileReader && window.FileList && window.Blob) {
+    document.querySelector("input[type=file]").addEventListener('change', onFileSelect, false);
+} else {
+    console.warn("Your browser does not support FileAPI")
+}
+
+
 
 
