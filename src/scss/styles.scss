@@ -294,9 +294,10 @@
     height: 95vh;
     width: 1440px;
     position: relative;
-    //display: flex;
     z-index: 50;
     padding-left: 50px;
+    display: flex;
+    flex-wrap: wrap;
 
     .pin-photo {
         width: 210px;
@@ -330,7 +331,11 @@
         background-color: white;
         position: absolute;
         margin: 50px 400px;
-        display: flex;
+        //display: flex;
+
+        &.edit {
+
+        }
 
         .buttons-wrapper {
             display: flex;
@@ -357,7 +362,6 @@
         .add-pin-container {
             display: flex;
 
-
             .input-wrapper {
                 display: flex;
                 padding-top: 10px;
@@ -373,7 +377,6 @@
                     cursor: pointer;
                     padding: 150px 100px;
                 }
-
             }
 
             .title-wrapper {
@@ -397,8 +400,6 @@
                 }
             }
         }
-
-        
     }
 
     .preview-image {
@@ -406,7 +407,6 @@
         border-radius: 10px;
         margin-left: 40px;
     }
-
 }
 
 .lightgray {
@@ -422,6 +422,13 @@
     .pin-image {
         width: 210px;
         border-radius: 10px;
+    }
+
+    .pin-title {
+        width: 210px;
+        font-family: "Open Sans", sans-serif;
+        font-size: 14px;
+        padding-left: 10px;
     }
 
     .delete-btn, .edit-btn {

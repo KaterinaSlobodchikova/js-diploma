@@ -1,4 +1,4 @@
-import { addNewPin, getPhotos, addNewPin, savePin, getPinAsHtml } from './utils.js';
+import { addNewPin, addNewPin, savePin, getPinAsHtml, getPinById, onFileSelect } from './utils.js';
 import { PHOTO_KEY, PHOTOS_LIST_KEY } from './constants.js';
 import { PIN_PHOTOS } from './api.js';
 
@@ -88,6 +88,13 @@ const hideWindow = () => {
     wrapper.className += 'main-container';
 }
 
+const hideEditWindow = () => {
+    const windowEditPin = document.getElementById('modal-edit');
+    windowEditPin.style.display = 'none'; 
+    const wrapper = document.getElementById('main-wrapper');
+    wrapper.className += 'main-container';
+}
+
 const cancelCreatePin = document.getElementById('cancel-button');
 cancelCreatePin.addEventListener('click', hideWindow);
 
@@ -97,7 +104,7 @@ saveButton.addEventListener('click', () => {
     const file = document.getElementById('file').value;
     
     if (!title || !file) {
-        alert('Fill in all fields')
+        alert('Fill in all required fields')
     } else {
         addNewPin({ title, file });
         hideWindow();
@@ -112,10 +119,10 @@ export const showEditWindow = (pinId) => {
     modalWindow.className = 'add-pin-window edit';
 
     const wrapper = document.getElementById('main-wrapper');
-    wrapper.className += ' lightgray';
+    //wrapper.className += ' lightgray';
     const title = document.getElementById('title-edit');
     const file = document.getElementById('file-edit');
-    const pin = getUserById(pinId);
+    const pin = getPinById(pinId);
 
     title.value = pin.title;
     file.value = pin.file;
@@ -128,8 +135,6 @@ editButton.addEventListener('click', (e) => {
     }
 })
 
-
-
 const inputImg = document.getElementById('file');
 inputImg.addEventListener('click', (e) => {
     
@@ -138,6 +143,20 @@ inputImg.addEventListener('click', (e) => {
         onFileSelect(e);        
     }
 })
+
+const saveEditPinButton = document.getElementById('save-btn');
+saveEditPinButton.addEventListener('click', () => {
+    const title = document.getElementById('title-edit').value;
+    const file = document.getElementById('file-edit').value;
+    
+    if (!title) {
+        alert('Fill in all required fields')
+    } else {
+        console.log(editedId);
+        savePin(editedId, { title, file });  
+        hideEditWindow();  
+    }
+});
 
 
 

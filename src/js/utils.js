@@ -2,7 +2,6 @@ import { getPhotos, PIN_PHOTOS } from './api.js';
 
 export const initializeHomePage = () => {
     const photos = getPhotos();
-    console.log(photos);
 }
 
 export const appendPin = (pin) => {
@@ -27,6 +26,7 @@ export const getPinAsHtml = (pin) => {
     pinImg.className = 'pin-image';
     deletePin.className = 'delete-btn';
     editPin.className = 'edit-btn';
+    pinBody.className = 'pin-title';
 
     pinBody.id = `pin-title_${pin.id}`;
     pinWrapper.id = `pin_${pin.id}`;
@@ -61,24 +61,6 @@ export const addNewPin = (pinData) => {
 
 initializeHomePage();
 
-export const savePin = (id, pinData) => {
-    const storedPins = JSON.parse(localStorage.getItem(PIN_PHOTOS));
-    const pinToSave = storedPins.map(pin =>{
-        if (pin.id === id){
-            pin.title = pinData.title;
-            pin.file = pinData.file;
-        }
-
-        return pin;
-    })
-
-    const pinTitleHtml = document.getElementById(`pintitle_${id}`);
-    pinTitleHtml.innerHTML = pinData.title;
-    
-    localStorage.setItem(PHOTOS_LIST_KEY, JSON.stringify(pinToSave));
-
-}
-
 function onFileSelect(e) {
     const f = e.target.files[0];
     const reader = new FileReader;
@@ -92,6 +74,29 @@ if(window.File && window.FileReader && window.FileList && window.Blob) {
     document.querySelector("input[type=file]").addEventListener('change', onFileSelect, false);
 } else {
     console.warn("Your browser does not support FileAPI")
+}
+
+export const getPinById = (id) => {
+    const storedUsers = JSON.parse(localStorage.getItem(PHOTOS_LIST_KEY));
+
+    return storedUsers.find(pin => pin.id === id);
+}
+
+export const savePin = (id, pinData) => {
+    const storedPins = JSON.parse(localStorage.getItem(PHOTOS_LIST_KEY));
+    const pinsToSave = storedPins.map(pin => {
+        if (pin.id === id) {
+            pin.title = pinData.title;
+            pin.file = pinData.file;
+        }
+
+        return pin;
+    });
+
+    const pinTitleHtml = document.getElementById(`pin-title_${id}`);
+    pinTitleHtml.innerHTML = pinData.title;
+
+    localStorage.setItem(PHOTOS_LIST_KEY, JSON.stringify(pinsToSave));
 }
 
 
